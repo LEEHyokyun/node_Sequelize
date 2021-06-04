@@ -32,7 +32,7 @@ fs.readdirSync(__dirname)
     return file.indexOf(".js") && file !== "index.js";
   })
   .forEach((file) => {
-    var model = sequelize.import(path.join(_dirname, fil));
+    var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 
@@ -43,6 +43,6 @@ Object.keys(db).forEach((modelName) => {
 });
 
 db.sequelize = sequelize;
-db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 module.exports = db;
