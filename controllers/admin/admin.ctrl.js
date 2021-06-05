@@ -2,7 +2,12 @@ const models = require("../../models");
 
 //실질적인 기능을 구현하기 위한 js파일
 exports.get_products = (_, res) => {
-  res.render("admin/products.html", { message: "hello" });
+  //받은 데이터로 Products database 조회하기
+  //data 조건에 맞춘 조회(Query의 where절)
+  //변수를 productsList로 정하고 여기에 data들이 저장됨
+  models.Products.findAll({}).then((productList) => {
+    res.render("admin/products.html", { productList: productList });
+  });
 };
 
 exports.get_products_write = (_, res) => {
