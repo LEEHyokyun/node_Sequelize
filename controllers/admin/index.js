@@ -16,4 +16,10 @@ router.post("/products/write", ctrl.post_products_write);
 //상세페이지 url요청에 따른 최초함수
 router.get("/products/detail/:id", ctrl.get_products_detail);
 
+//수정하기 페이지
+router.get("/products/edit/:id", ctrl.get_products_edit);
+
+//수정후 post요청을 구현
+router.post("/products/edit/:id", ctrl.post_products_edit);
+
 module.exports = router;

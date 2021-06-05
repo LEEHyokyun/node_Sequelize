@@ -30,9 +30,33 @@ exports.post_products_write = (req, res) => {
   });
 };
 
+//상세페이지
 exports.get_products_detail = (req, res) => {
   //req.params.id
   models.Products.findByPk(req.params.id).then((product) => {
     res.render("admin/detail.html", { product: product });
   });
+};
+
+//edit(수정)페이지 보여주기
+exports.get_products_edit = (req, res) => {
+  models.Products.findByPk(req.params.id).then((product) => {
+    res.render("admin/write.html", { product: product });
+  });
+};
+
+//수정하기 클릭후 수정된 사항을 반영해주기
+//수정된 data들이 반영되는 곳(조건)은 req.params의 Pk를 일치하도록 해준다
+//수정하고 상세페이지로 이동
+exports.post_products_edit = (req, res) => {
+  models.Products.update(
+    {
+      name: req.body.name,
+      price: req.body.price,
+      description: req.body.description,
+    },
+    {
+      where: { id: req.params.id },
+    }
+  ).then(() => res.redirect("/admin/products/detail/" + req.params.id));
 };
