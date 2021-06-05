@@ -22,4 +22,7 @@ router.get("/products/edit/:id", ctrl.get_products_edit);
 //수정후 post요청을 구현
 router.post("/products/edit/:id", ctrl.post_products_edit);
 
+//삭제 (새로운 url, get요청)
+router.get("/products/delete/:id", ctrl.get_products_delete);
+
 module.exports = router;

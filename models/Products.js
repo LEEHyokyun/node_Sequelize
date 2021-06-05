@@ -2,6 +2,7 @@ const moment = require("moment");
 
 module.exports = (sequelize, DataTypes) => {
   //prodcuts에 대한 data를 담는 table
+  //Products가 table 이름이 된다
   const Products = sequelize.define("Products", {
     //atuoIncrement : 1씩 자동증가
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
